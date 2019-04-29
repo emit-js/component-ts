@@ -1,0 +1,60 @@
+{
+  "name": "@emit-js/component",
+  "version": "0.0.1",
+  "description": "",
+  "keywords": [
+    ""
+  ],
+  "author": " <>",
+  "main": "dist/component.js",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/emit-js/component.git"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/emit-js/component#readme",
+  "scripts": {
+    "fix": "npm run lint -- --fix",
+    "lint": "eslint --ignore-path .gitignore --ext=js .",
+    "pretty": "prettier --write **/*.css **/*.json **/*.md",
+    "test": "jest",
+    "build": "tsc",
+    "docs": "typedoc --out docs --media media --theme markdown src/*.ts"
+  },
+  "devDependencies": {
+    "eslint": "5.16.0",
+    "eslint-config-prettier": "4.2.0",
+    "eslint-plugin-prettier": "3.0.1",
+    "prettier": "1.17.0",
+    "@typescript-eslint/eslint-plugin": "1.7.0",
+    "husky": "2.1.0",
+    "lint-staged": "8.1.5",
+    "jest": "24.7.1",
+    "@types/jest": "24.0.12",
+    "ts-jest": "24.0.2",
+    "@types/node": "11.13.8",
+    "typedoc-plugin-markdown": "1.2.0",
+    "typedoc": "0.14.2",
+    "typescript": "3.4.5"
+  },
+  "prettier": {
+    "printWidth": 60,
+    "semi": false,
+    "trailingComma": "es5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged && npm test && npm run docs && git add docs"
+    }
+  },
+  "lint-staged": {
+    "*.{css,json,md}": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.{js,jsx,ts}": [
+      "eslint --ignore-path .gitignore --fix",
+      "git add"
+    ]
+  }
+}
