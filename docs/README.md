@@ -1,6 +1,6 @@
 
-component
-=========
+@emit-js/component
+==================
 
 dom component
 
