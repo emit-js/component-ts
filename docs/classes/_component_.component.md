@@ -15,9 +15,10 @@
 
 ### Methods
 
+* [init](_component_.component.md#init)
 * [listen](_component_.component.md#listen)
 * [render](_component_.component.md#render)
-* [setup](_component_.component.md#setup)
+* [rerender](_component_.component.md#rerender)
 * [collectElements](_component_.component.md#collectelements)
 * [el](_component_.component.md#el)
 * [elFind](_component_.component.md#elfind)
@@ -33,7 +34,7 @@
 
 <a id="element"></a>
 
-### `<Private>` element
+### `<Protected>` element
 
 **● element**: *`Element`*
 
@@ -56,6 +57,25 @@ ___
 
 ## Methods
 
+<a id="init"></a>
+
+### `<Protected>` init
+
+▸ **init**(e: *`EventType`*): `Promise`<`any`>
+
+*Defined in component.ts:77*
+
+Asynchronous initializer function.
+
+**Parameters:**
+
+| Name | Type |
+| ------ | ------ |
+| e | `EventType` |
+
+**Returns:** `Promise`<`any`>
+
+___
 <a id="listen"></a>
 
 ###  listen
@@ -82,7 +102,7 @@ ___
 
 ### `<Protected>` render
 
-▸ **render**(e: *`EventType`*): `Element`
+▸ **render**(e: *`EventType`*): `Promise`<`Element`>
 
 *Defined in component.ts:60*
 
@@ -96,18 +116,18 @@ Render a dom element.
 | ------ | ------ |
 | e | `EventType` |
 
-**Returns:** `Element`
+**Returns:** `Promise`<`Element`>
 
 ___
-<a id="setup"></a>
+<a id="rerender"></a>
 
-### `<Protected>` setup
+### `<Protected>` rerender
 
-▸ **setup**(e: *`EventType`*): `Promise`<`any`>
+▸ **rerender**(e: *`EventType`*): `Promise`<`Element`>
 
-*Defined in component.ts:68*
+*Defined in component.ts:67*
 
-Asynchronous setup function.
+Rerender and replace dom element.
 
 **Parameters:**
 
@@ -115,16 +135,16 @@ Asynchronous setup function.
 | ------ | ------ |
 | e | `EventType` |
 
-**Returns:** `Promise`<`any`>
+**Returns:** `Promise`<`Element`>
 
 ___
 <a id="collectelements"></a>
 
 ### `<Static>` collectElements
 
-▸ **collectElements**(el: *`Element`*, ids: *`string`[]*): `Element`[]
+▸ **collectElements**(el: *`Element`*, ids: *`string`[][]*): `Element`[]
 
-*Defined in component.ts:213*
+*Defined in component.ts:224*
 
 Gather child elements that have an id match.
 
@@ -133,7 +153,7 @@ Gather child elements that have an id match.
 | Name | Type |
 | ------ | ------ |
 | el | `Element` |
-| ids | `string`[] |
+| ids | `string`[][] |
 
 **Returns:** `Element`[]
 
@@ -144,7 +164,7 @@ ___
 
 ▸ **el**(tagName: *`any`*): `Element`
 
-*Defined in component.ts:73*
+*Defined in component.ts:82*
 
 Substitute function for `React.createElement` in JSX.
 
@@ -163,7 +183,7 @@ ___
 
 ▸ **elFind**(id: *`string`[]*): `Element`
 
-*Defined in component.ts:151*
+*Defined in component.ts:160*
 
 Find an element based on an id array.
 
@@ -180,9 +200,9 @@ ___
 
 ### `<Static>` elList
 
-▸ **elList**(arg: *`any`*, prop: *`any`*, emit: *`any`*): `string`[]
+▸ **elList**(emit: *`Emit`*, eventName: *`string`*, id: *`string`[]*): `string`[][]
 
-*Defined in component.ts:158*
+*Defined in component.ts:167*
 
 Reconcile the dom with an array of object.
 
@@ -190,11 +210,11 @@ Reconcile the dom with an array of object.
 
 | Name | Type |
 | ------ | ------ |
-| arg | `any` |
-| prop | `any` |
-| emit | `any` |
+| emit | `Emit` |
+| eventName | `string` |
+| id | `string`[] |
 
-**Returns:** `string`[]
+**Returns:** `string`[][]
 
 ___
 

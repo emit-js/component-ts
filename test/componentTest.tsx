@@ -13,11 +13,14 @@ declare module "@emit-js/emit" {
 }
 
 class Test extends Component {
-  protected async setup(e: EventType): Promise<void> {
-    await e.emit.set("test", "hi")
+  protected async init(e: EventType): Promise<void> {
+    const { emit } = e
+    emit.on([e.id, "rerender"], this.rerender.bind(this))
+    await emit.set("test", "hi")
   }
-  protected render(e: EventType): Element {
-    return <div>{e.emit.get("test")}</div>
+  protected async render(e: EventType): Promise<Element> {
+    const { emit, id } = e
+    return <div id={id}>{emit.get("test")}</div>
   }
 }
 
@@ -37,3 +40,20 @@ test("component render", async (): Promise<void> => {
   expect(el.tagName).toBe("DIV")
   expect(el.textContent).toBe("hi")
 })
+
+test("component rerender", async (): Promise<void> => {
+  const el = await emit.testComponent("test")
+  await emit.emit(["test", "rerender"])
+  const el2 = await emit.testComponent("test")
+  expect(el).not.toBe(el2)
+})
+
+test(
+  "component render with existing element",
+  async(): Promise<void> => {
+    const el = <div id="test" />
+    document.body.appendChild(el)
+    const el2 = await emit.testComponent("test")
+    expect(el).toBe(el2)
+  }
+)

@@ -1,10 +1,10 @@
-import { EventType } from "@emit-js/emit"
+import { EventType, Emit } from "@emit-js/emit"
 
 export abstract class Component {
   /**
    * Rendered dom element.
    */
-  private element: Element
+  protected element: Element
 
   /**
    * Synthetic event flag.
@@ -41,10 +41,10 @@ export abstract class Component {
       this.element = Component.elFind(e.id)
     }
 
-    await this.setup(e)
+    await this.init(e)
 
     if (!this.element) {
-      this.element = this.render(e)
+      this.element = await this.render(e)
     }
 
     return this.element
@@ -57,15 +57,24 @@ export abstract class Component {
    * This function is typically overwritten by the subclass.
    */
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  protected render(e: EventType): Element {
+  protected async render(e: EventType): Promise<Element> {
     return document.createElement("div")
   }
 
   /**
-   * Asynchronous setup function.
+   * Rerender and replace dom element.
+   */
+  protected async rerender(e: EventType): Promise<Element> {
+    const el = await this.render(e)
+    this.element.replaceWith(el)
+    return this.element = el
+  }
+
+  /**
+   * Asynchronous initializer function.
    */
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  protected async setup(e: EventType): Promise<any> {}
+  protected async init(e: EventType): Promise<any> {}
   
   /**
    * Substitute function for `React.createElement` in JSX.
@@ -155,34 +164,36 @@ export abstract class Component {
   /**
    * Reconcile the dom with an array of object.
    */
-  public static elList(arg, prop, emit): string[] {
-    const propStr = prop.join("."),
-      v = emit.get(prop)
-
-    const el = document.getElementById(propStr)
+  public static elList(
+    emit: Emit, eventName: string, id: string[]
+  ): string[][] {
+    const el = this.elFind(id)
+    const v = emit.emit("get", id)
 
     if (!el || !v) {
       return
     }
 
-    const ids = v.map(function (d):string {
-      return d.id.toString()
-    })
+    const recordIds = v.map(
+      (d: { id: string }): string => d.id.toString()
+    )
 
-    const propIds = ids.map(function (id): string {
-      return propStr + "." + id
-    })
+    const eventIds = recordIds.map(
+      (i: string): string[] => id.concat([ i ])
+    )
 
-    const childEls = this.collectElements(el, propIds)
+    const childEls = this.collectElements(el, eventIds)
 
     let after = false,
       childEl = childEls[0]
 
-    for (let i = 0; i < propIds.length; i++) {
-      const id = propIds[i]
+    for (let i = 0; i < eventIds.length; i++) {
+      const id = eventIds[i]
 
       if (!childEl || id !== childEl.id) {
-        const newNode = emit[arg.event](prop, ids[i], null)
+        const newNode = emit.emit(
+          [eventName, id, recordIds[i]]
+        )
 
         if (childEl) {
           childEl[after ? "after" : "before"](newNode)
@@ -194,7 +205,7 @@ export abstract class Component {
           el.appendChild(newNode)
         }
       } else {
-        emit[arg.event](prop, ids[i], { element: childEl })
+        emit.emit([eventName, id, recordIds[i]])
 
         if (childEl && childEl.nextElementSibling) {
           childEl = childEl.nextElementSibling
@@ -204,17 +215,19 @@ export abstract class Component {
       }
     }
 
-    return propIds
+    return eventIds
   }
 
   /**
    * Gather child elements that have an id match.
    */
   public static collectElements(
-    el: Element, ids: string[]
+    el: Element, ids: string[][]
   ): Element[] {
+    const joinedIds = ids.map((id: string[]): string => id.join("."))
+
     return Array.from(el.children).map((child): Element => {
-      if (ids.indexOf(child.id) > -1) {
+      if (joinedIds.indexOf(child.id) > -1) {
         return child
       } else {
         child.remove()
