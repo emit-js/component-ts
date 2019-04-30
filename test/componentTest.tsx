@@ -41,6 +41,12 @@ test("component render", async (): Promise<void> => {
   expect(el.textContent).toBe("hi")
 })
 
+test("component render twice", async (): Promise<void> => {
+  const el = await emit.testComponent()
+  const el2 = await emit.testComponent()
+  expect(el).toBe(el2)
+})
+
 test("component rerender", async (): Promise<void> => {
   const el = await emit.testComponent("test")
   await emit.emit(["test", "rerender"])
