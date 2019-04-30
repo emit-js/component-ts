@@ -15,7 +15,7 @@
 
 ### Methods
 
-* [component](_component_.component.md#component)
+* [listen](_component_.component.md#listen)
 * [render](_component_.component.md#render)
 * [setup](_component_.component.md#setup)
 * [collectElements](_component_.component.md#collectelements)
@@ -37,47 +37,58 @@
 
 **● element**: *`Element`*
 
-*Defined in component.ts:4*
+*Defined in component.ts:7*
+
+Rendered dom element.
 
 ___
 <a id="events"></a>
 
 ### `<Static>``<Private>` events
 
-**● events**: *`object`*
+**● events**: *`Record`<`string`, `boolean`>*
 
-*Defined in component.ts:16*
+*Defined in component.ts:25*
 
-#### Type declaration
+Synthetic event flag.
 
 ___
 
 ## Methods
 
-<a id="component"></a>
+<a id="listen"></a>
 
-###  component
+###  listen
 
-▸ **component**(e: *`EventType`*): `Promise`<`Element`>
+▸ **listen**(e: *`EventType`*): `Promise`<`Element`>
 
-*Defined in component.ts:18*
+*Defined in component.ts:37*
+
+[Emit-js](https://github.com/emit-js/emit) listener function.
+
+*__remarks__*: Use this function with `emit.on` or `emit.any`.
 
 **Parameters:**
 
-| Name | Type |
-| ------ | ------ |
-| e | `EventType` |
+| Name | Type | Description |
+| ------ | ------ | ------ |
+| e | `EventType` |  Event information |
 
 **Returns:** `Promise`<`Element`>
+Dom element
 
 ___
 <a id="render"></a>
 
 ### `<Protected>` render
 
-▸ **render**(e: *`EventType`*): `any`
+▸ **render**(e: *`EventType`*): `Element`
 
-*Defined in component.ts:28*
+*Defined in component.ts:52*
+
+Render a dom element.
+
+*__remarks__*: This function is typically overwritten by the subclass.
 
 **Parameters:**
 
@@ -85,7 +96,7 @@ ___
 | ------ | ------ |
 | e | `EventType` |
 
-**Returns:** `any`
+**Returns:** `Element`
 
 ___
 <a id="setup"></a>
@@ -94,7 +105,9 @@ ___
 
 ▸ **setup**(e: *`EventType`*): `Promise`<`any`>
 
-*Defined in component.ts:31*
+*Defined in component.ts:60*
+
+Asynchronous setup function.
 
 **Parameters:**
 
@@ -109,16 +122,18 @@ ___
 
 ### `<Static>` collectElements
 
-▸ **collectElements**(el: *`Element`*, propIds: *`string`[]*): `Element`[]
+▸ **collectElements**(el: *`Element`*, ids: *`string`[]*): `Element`[]
 
-*Defined in component.ts:164*
+*Defined in component.ts:205*
+
+Gather child elements that have an id match.
 
 **Parameters:**
 
 | Name | Type |
 | ------ | ------ |
 | el | `Element` |
-| propIds | `string`[] |
+| ids | `string`[] |
 
 **Returns:** `Element`[]
 
@@ -129,7 +144,9 @@ ___
 
 ▸ **el**(tagName: *`any`*): `Element`
 
-*Defined in component.ts:33*
+*Defined in component.ts:65*
+
+Substitute function for `React.createElement` in JSX.
 
 **Parameters:**
 
@@ -144,15 +161,17 @@ ___
 
 ### `<Static>` elFind
 
-▸ **elFind**(prop: *`any`*): `Element`
+▸ **elFind**(id: *`string`[]*): `Element`
 
-*Defined in component.ts:108*
+*Defined in component.ts:143*
+
+Find an element based on an id array.
 
 **Parameters:**
 
 | Name | Type |
 | ------ | ------ |
-| prop | `any` |
+| id | `string`[] |
 
 **Returns:** `Element`
 
@@ -163,7 +182,9 @@ ___
 
 ▸ **elList**(arg: *`any`*, prop: *`any`*, emit: *`any`*): `string`[]
 
-*Defined in component.ts:112*
+*Defined in component.ts:150*
+
+Reconcile the dom with an array of object.
 
 **Parameters:**
 
@@ -185,7 +206,9 @@ ___
 
 **htmlProps**: *`object`*
 
-*Defined in component.ts:6*
+*Defined in component.ts:12*
+
+Dom element props.
 
 <a id="htmlprops.classname"></a>
 
@@ -193,7 +216,7 @@ ___
 
 **● className**: *`boolean`* = true
 
-*Defined in component.ts:7*
+*Defined in component.ts:13*
 
 ___
 <a id="htmlprops.id"></a>
@@ -202,7 +225,7 @@ ___
 
 **● id**: *`boolean`* = true
 
-*Defined in component.ts:8*
+*Defined in component.ts:14*
 
 ___
 <a id="htmlprops.innerhtml"></a>
@@ -211,7 +234,7 @@ ___
 
 **● innerHTML**: *`boolean`* = true
 
-*Defined in component.ts:9*
+*Defined in component.ts:15*
 
 ___
 <a id="htmlprops.nodevalue"></a>
@@ -220,7 +243,7 @@ ___
 
 **● nodeValue**: *`boolean`* = true
 
-*Defined in component.ts:10*
+*Defined in component.ts:16*
 
 ___
 <a id="htmlprops.tabindex"></a>
@@ -229,7 +252,7 @@ ___
 
 **● tabIndex**: *`boolean`* = true
 
-*Defined in component.ts:11*
+*Defined in component.ts:17*
 
 ___
 <a id="htmlprops.textcontent"></a>
@@ -238,7 +261,7 @@ ___
 
 **● textContent**: *`boolean`* = true
 
-*Defined in component.ts:12*
+*Defined in component.ts:18*
 
 ___
 <a id="htmlprops.value"></a>
@@ -247,7 +270,7 @@ ___
 
 **● value**: *`boolean`* = true
 
-*Defined in component.ts:13*
+*Defined in component.ts:19*
 
 ___
 

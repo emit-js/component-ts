@@ -1,8 +1,14 @@
 import { EventType } from "@emit-js/emit"
 
 export abstract class Component {
+  /**
+   * Rendered dom element.
+   */
   private element: Element
 
+  /**
+   * Dom element props.
+   */
   private static htmlProps = {
     className: true,
     id: true,
@@ -13,9 +19,22 @@ export abstract class Component {
     value: true,
   }
 
-  private static events = {}
+  /**
+   * Synthetic event flag.
+   */
+  private static events: Record<string, boolean> = {}
 
-  public async component(e: EventType): Promise<Element> {
+  /**
+   * [Emit-js](https://github.com/emit-js/emit) listener
+   * function.
+   * 
+   * @remarks
+   * Use this function with `emit.on` or `emit.any`.
+   *
+   * @param e - Event information
+   * @returns Dom element
+   */
+  public async listen(e: EventType): Promise<Element> {
     if (this.element) {
       return this.element
     } else {
@@ -24,12 +43,25 @@ export abstract class Component {
     }
   }
 
+  /**
+   * Render a dom element.
+   * 
+   * @remarks This function is typically overwritten by the subclass.
+   */
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  protected render(e: EventType): any {}
+  protected render(e: EventType): Element {
+    return document.createElement("div")
+  }
 
+  /**
+   * Asynchronous setup function.
+   */
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   protected async setup(e: EventType): Promise<any> {}
   
+  /**
+   * Substitute function for `React.createElement` in JSX.
+   */
   public static el(tagName): Element {
     const node =
       tagName.nodeType === 1
@@ -105,10 +137,16 @@ export abstract class Component {
     return node
   }
 
-  public static elFind(prop): Element {
-    return document.getElementById(prop.join("."))
+  /**
+   * Find an element based on an id array.
+   */
+  public static elFind(id: string[]): Element {
+    return document.getElementById(id.join("."))
   }
 
+  /**
+   * Reconcile the dom with an array of object.
+   */
   public static elList(arg, prop, emit): string[] {
     const propStr = prop.join("."),
       v = emit.get(prop)
@@ -161,12 +199,14 @@ export abstract class Component {
     return propIds
   }
 
+  /**
+   * Gather child elements that have an id match.
+   */
   public static collectElements(
-    el: Element,
-    propIds: string[]
+    el: Element, ids: string[]
   ): Element[] {
     return Array.from(el.children).map((child): Element => {
-      if (propIds.indexOf(child.id) > -1) {
+      if (ids.indexOf(child.id) > -1) {
         return child
       } else {
         child.remove()

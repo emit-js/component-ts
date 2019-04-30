@@ -28,7 +28,7 @@ beforeEach((): void => {
   log(emit)
   store(emit)
 
-  emit.any("testComponent", component.component.bind(component))
+  emit.any("testComponent", component.listen.bind(component))
 })
 
 test("component render", async (): Promise<void> => {
