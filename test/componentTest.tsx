@@ -14,8 +14,8 @@ declare module "@emit-js/emit" {
 
 class Test extends Component {
   protected async init(e: EventType): Promise<void> {
-    const { emit } = e
-    emit.on([e.id, "rerender"], this.rerender.bind(this))
+    const { emit, id } = e
+    emit.on([id, "rerender"], this.rerender.bind(this))
     await emit.set("test", "hi")
   }
   protected async render(e: EventType): Promise<Element> {
