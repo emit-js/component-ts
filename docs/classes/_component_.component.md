@@ -48,7 +48,7 @@ ___
 
 **● events**: *`Record`<`string`, `boolean`>*
 
-*Defined in component.ts:25*
+*Defined in component.ts:12*
 
 Synthetic event flag.
 
@@ -84,7 +84,7 @@ ___
 
 ▸ **render**(e: *`EventType`*): `Element`
 
-*Defined in component.ts:52*
+*Defined in component.ts:60*
 
 Render a dom element.
 
@@ -105,7 +105,7 @@ ___
 
 ▸ **setup**(e: *`EventType`*): `Promise`<`any`>
 
-*Defined in component.ts:60*
+*Defined in component.ts:68*
 
 Asynchronous setup function.
 
@@ -124,7 +124,7 @@ ___
 
 ▸ **collectElements**(el: *`Element`*, ids: *`string`[]*): `Element`[]
 
-*Defined in component.ts:205*
+*Defined in component.ts:213*
 
 Gather child elements that have an id match.
 
@@ -144,7 +144,7 @@ ___
 
 ▸ **el**(tagName: *`any`*): `Element`
 
-*Defined in component.ts:65*
+*Defined in component.ts:73*
 
 Substitute function for `React.createElement` in JSX.
 
@@ -163,7 +163,7 @@ ___
 
 ▸ **elFind**(id: *`string`[]*): `Element`
 
-*Defined in component.ts:143*
+*Defined in component.ts:151*
 
 Find an element based on an id array.
 
@@ -182,7 +182,7 @@ ___
 
 ▸ **elList**(arg: *`any`*, prop: *`any`*, emit: *`any`*): `string`[]
 
-*Defined in component.ts:150*
+*Defined in component.ts:158*
 
 Reconcile the dom with an array of object.
 
@@ -206,7 +206,7 @@ ___
 
 **htmlProps**: *`object`*
 
-*Defined in component.ts:12*
+*Defined in component.ts:17*
 
 Dom element props.
 
@@ -216,7 +216,7 @@ Dom element props.
 
 **● className**: *`boolean`* = true
 
-*Defined in component.ts:13*
+*Defined in component.ts:18*
 
 ___
 <a id="htmlprops.id"></a>
@@ -225,7 +225,7 @@ ___
 
 **● id**: *`boolean`* = true
 
-*Defined in component.ts:14*
+*Defined in component.ts:19*
 
 ___
 <a id="htmlprops.innerhtml"></a>
@@ -234,7 +234,7 @@ ___
 
 **● innerHTML**: *`boolean`* = true
 
-*Defined in component.ts:15*
+*Defined in component.ts:20*
 
 ___
 <a id="htmlprops.nodevalue"></a>
@@ -243,7 +243,7 @@ ___
 
 **● nodeValue**: *`boolean`* = true
 
-*Defined in component.ts:16*
+*Defined in component.ts:21*
 
 ___
 <a id="htmlprops.tabindex"></a>
@@ -252,7 +252,7 @@ ___
 
 **● tabIndex**: *`boolean`* = true
 
-*Defined in component.ts:17*
+*Defined in component.ts:22*
 
 ___
 <a id="htmlprops.textcontent"></a>
@@ -261,7 +261,7 @@ ___
 
 **● textContent**: *`boolean`* = true
 
-*Defined in component.ts:18*
+*Defined in component.ts:23*
 
 ___
 <a id="htmlprops.value"></a>
@@ -270,7 +270,7 @@ ___
 
 **● value**: *`boolean`* = true
 
-*Defined in component.ts:19*
+*Defined in component.ts:24*
 
 ___
 

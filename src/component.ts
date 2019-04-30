@@ -7,6 +7,11 @@ export abstract class Component {
   private element: Element
 
   /**
+   * Synthetic event flag.
+   */
+  private static events: Record<string, boolean> = {}
+
+  /**
    * Dom element props.
    */
   private static htmlProps = {
@@ -18,11 +23,6 @@ export abstract class Component {
     textContent: true,
     value: true,
   }
-
-  /**
-   * Synthetic event flag.
-   */
-  private static events: Record<string, boolean> = {}
 
   /**
    * [Emit-js](https://github.com/emit-js/emit) listener
@@ -38,15 +38,23 @@ export abstract class Component {
     if (this.element) {
       return this.element
     } else {
-      await this.setup(e)
-      return this.element = this.render(e)
+      this.element = Component.elFind(e.id)
     }
+
+    await this.setup(e)
+
+    if (!this.element) {
+      this.element = this.render(e)
+    }
+
+    return this.element
   }
 
   /**
    * Render a dom element.
    * 
-   * @remarks This function is typically overwritten by the subclass.
+   * @remarks
+   * This function is typically overwritten by the subclass.
    */
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   protected render(e: EventType): Element {
