@@ -10,14 +10,18 @@
 
 ### Properties
 
+* [element](_component_.component.md#element)
 * [events](_component_.component.md#events)
 
 ### Methods
 
+* [component](_component_.component.md#component)
+* [render](_component_.component.md#render)
+* [setup](_component_.component.md#setup)
 * [collectElements](_component_.component.md#collectelements)
+* [el](_component_.component.md#el)
 * [elFind](_component_.component.md#elfind)
 * [elList](_component_.component.md#ellist)
-* [el](_component_.component.md#el)
 
 ### Object literals
 
@@ -27,13 +31,22 @@
 
 ## Properties
 
+<a id="element"></a>
+
+### `<Private>` element
+
+**● element**: *`Element`*
+
+*Defined in component.ts:4*
+
+___
 <a id="events"></a>
 
 ### `<Static>``<Private>` events
 
 **● events**: *`object`*
 
-*Defined in component.ts:12*
+*Defined in component.ts:16*
 
 #### Type declaration
 
@@ -41,13 +54,64 @@ ___
 
 ## Methods
 
+<a id="component"></a>
+
+###  component
+
+▸ **component**(e: *`EventType`*): `Promise`<`Element`>
+
+*Defined in component.ts:18*
+
+**Parameters:**
+
+| Name | Type |
+| ------ | ------ |
+| e | `EventType` |
+
+**Returns:** `Promise`<`Element`>
+
+___
+<a id="render"></a>
+
+### `<Protected>` render
+
+▸ **render**(e: *`EventType`*): `any`
+
+*Defined in component.ts:28*
+
+**Parameters:**
+
+| Name | Type |
+| ------ | ------ |
+| e | `EventType` |
+
+**Returns:** `any`
+
+___
+<a id="setup"></a>
+
+### `<Protected>` setup
+
+▸ **setup**(e: *`EventType`*): `Promise`<`any`>
+
+*Defined in component.ts:31*
+
+**Parameters:**
+
+| Name | Type |
+| ------ | ------ |
+| e | `EventType` |
+
+**Returns:** `Promise`<`any`>
+
+___
 <a id="collectelements"></a>
 
-### `<Protected>` collectElements
+### `<Static>` collectElements
 
 ▸ **collectElements**(el: *`Element`*, propIds: *`string`[]*): `Element`[]
 
-*Defined in component.ts:145*
+*Defined in component.ts:164*
 
 **Parameters:**
 
@@ -59,19 +123,35 @@ ___
 **Returns:** `Element`[]
 
 ___
-<a id="elfind"></a>
+<a id="el"></a>
 
-### `<Protected>` elFind
+### `<Static>` el
 
-▸ **elFind**(arg: *`any`*, prop: *`any`*): `Element`
+▸ **el**(tagName: *`any`*): `Element`
 
-*Defined in component.ts:89*
+*Defined in component.ts:33*
 
 **Parameters:**
 
 | Name | Type |
 | ------ | ------ |
-| arg | `any` |
+| tagName | `any` |
+
+**Returns:** `Element`
+
+___
+<a id="elfind"></a>
+
+### `<Static>` elFind
+
+▸ **elFind**(prop: *`any`*): `Element`
+
+*Defined in component.ts:108*
+
+**Parameters:**
+
+| Name | Type |
+| ------ | ------ |
 | prop | `any` |
 
 **Returns:** `Element`
@@ -79,11 +159,11 @@ ___
 ___
 <a id="ellist"></a>
 
-### `<Protected>` elList
+### `<Static>` elList
 
 ▸ **elList**(arg: *`any`*, prop: *`any`*, emit: *`any`*): `string`[]
 
-*Defined in component.ts:93*
+*Defined in component.ts:112*
 
 **Parameters:**
 
@@ -96,23 +176,6 @@ ___
 **Returns:** `string`[]
 
 ___
-<a id="el"></a>
-
-### `<Static>` el
-
-▸ **el**(tagName: *`any`*): `Element`
-
-*Defined in component.ts:14*
-
-**Parameters:**
-
-| Name | Type |
-| ------ | ------ |
-| tagName | `any` |
-
-**Returns:** `Element`
-
-___
 
 ## Object literals
 
@@ -122,7 +185,7 @@ ___
 
 **htmlProps**: *`object`*
 
-*Defined in component.ts:2*
+*Defined in component.ts:6*
 
 <a id="htmlprops.classname"></a>
 
@@ -130,7 +193,7 @@ ___
 
 **● className**: *`boolean`* = true
 
-*Defined in component.ts:3*
+*Defined in component.ts:7*
 
 ___
 <a id="htmlprops.id"></a>
@@ -139,7 +202,7 @@ ___
 
 **● id**: *`boolean`* = true
 
-*Defined in component.ts:4*
+*Defined in component.ts:8*
 
 ___
 <a id="htmlprops.innerhtml"></a>
@@ -148,7 +211,7 @@ ___
 
 **● innerHTML**: *`boolean`* = true
 
-*Defined in component.ts:5*
+*Defined in component.ts:9*
 
 ___
 <a id="htmlprops.nodevalue"></a>
@@ -157,7 +220,7 @@ ___
 
 **● nodeValue**: *`boolean`* = true
 
-*Defined in component.ts:6*
+*Defined in component.ts:10*
 
 ___
 <a id="htmlprops.tabindex"></a>
@@ -166,7 +229,7 @@ ___
 
 **● tabIndex**: *`boolean`* = true
 
-*Defined in component.ts:7*
+*Defined in component.ts:11*
 
 ___
 <a id="htmlprops.textcontent"></a>
@@ -175,7 +238,7 @@ ___
 
 **● textContent**: *`boolean`* = true
 
-*Defined in component.ts:8*
+*Defined in component.ts:12*
 
 ___
 <a id="htmlprops.value"></a>
@@ -184,7 +247,7 @@ ___
 
 **● value**: *`boolean`* = true
 
-*Defined in component.ts:9*
+*Defined in component.ts:13*
 
 ___
 

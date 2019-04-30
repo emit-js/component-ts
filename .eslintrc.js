@@ -29,6 +29,7 @@ module.exports = {
       "error",
       {
         code: 60,
+        ignoreComments: true,
         ignoreRegExpLiterals: true,
         ignoreStrings: true,
         ignoreTemplateLiterals: true,

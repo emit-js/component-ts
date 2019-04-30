@@ -1,4 +1,8 @@
-export class Component {
+import { EventType } from "@emit-js/emit"
+
+export abstract class Component {
+  private element: Element
+
   private static htmlProps = {
     className: true,
     id: true,
@@ -10,6 +14,21 @@ export class Component {
   }
 
   private static events = {}
+
+  public async component(e: EventType): Promise<Element> {
+    if (this.element) {
+      return this.element
+    } else {
+      await this.setup(e)
+      return this.element = this.render(e)
+    }
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  protected render(e: EventType): any {}
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  protected async setup(e: EventType): Promise<any> {}
   
   public static el(tagName): Element {
     const node =
@@ -34,7 +53,7 @@ export class Component {
             node.style.cssText = val
           } else if (
             typeof val !== "string" ||
-            Component.htmlProps[key]
+            this.htmlProps[key]
           ) {
             node[key] = val
             if (key === "id" && Array.isArray(val)) {
@@ -86,11 +105,11 @@ export class Component {
     return node
   }
 
-  protected elFind(arg, prop): Element {
+  public static elFind(prop): Element {
     return document.getElementById(prop.join("."))
   }
 
-  protected elList(arg, prop, emit): string[] {
+  public static elList(arg, prop, emit): string[] {
     const propStr = prop.join("."),
       v = emit.get(prop)
 
@@ -142,7 +161,7 @@ export class Component {
     return propIds
   }
 
-  protected collectElements(
+  public static collectElements(
     el: Element,
     propIds: string[]
   ): Element[] {
