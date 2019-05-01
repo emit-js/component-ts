@@ -1,11 +1,12 @@
 {
   "name": "@emit-js/component",
   "version": "0.0.1",
-  "description": "",
+  "description": "dom component",
   "keywords": [
-    ""
+    "dom",
+    "component"
   ],
-  "author": " <>",
+  "author": "emit <emit@emit-js.com>",
   "main": "dist/component.js",
   "repository": {
     "type": "git",
