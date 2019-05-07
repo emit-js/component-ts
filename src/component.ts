@@ -34,17 +34,20 @@ export abstract class Component {
    * @param e - Event information
    * @returns Dom element
    */
-  public async listen(e: EventType): Promise<Element> {
+  public async listener(
+    e: EventType,
+    ...args: any[]
+  ): Promise<Element> {
     if (this.element) {
       return this.element
     } else {
       this.element = Component.elFind(e.id)
     }
 
-    await this.init(e)
+    await this.init(e, ...args)
 
     if (!this.element) {
-      this.element = await this.render(e)
+      this.element = await this.render(e, ...args)
     }
 
     return this.element
@@ -56,16 +59,23 @@ export abstract class Component {
    * @remarks
    * This function is typically overwritten by the subclass.
    */
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  protected async render(e: EventType): Promise<Element> {
+  protected async render(
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    e: EventType,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    ...args: any[]
+  ): Promise<Element> {
     return document.createElement("div")
   }
 
   /**
    * Rerender and replace dom element.
    */
-  protected async rerender(e: EventType): Promise<Element> {
-    const el = await this.render(e)
+  protected async rerender(
+    e: EventType,
+    ...args: any[]
+  ): Promise<Element> {
+    const el = await this.render(e, ...args)
     this.element.replaceWith(el)
     return this.element = el
   }
@@ -73,8 +83,12 @@ export abstract class Component {
   /**
    * Asynchronous initializer function.
    */
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  protected async init(e: EventType): Promise<any> {}
+  protected async init(
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    e: EventType,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    ...args: any[]
+  ): Promise<any> {}
   
   /**
    * Substitute function for `React.createElement` in JSX.

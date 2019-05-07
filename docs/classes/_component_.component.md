@@ -16,7 +16,7 @@
 ### Methods
 
 * [init](_component_.component.md#init)
-* [listen](_component_.component.md#listen)
+* [listener](_component_.component.md#listener)
 * [render](_component_.component.md#render)
 * [rerender](_component_.component.md#rerender)
 * [collectElements](_component_.component.md#collectelements)
@@ -61,9 +61,9 @@ ___
 
 ### `<Protected>` init
 
-▸ **init**(e: *`EventType`*): `Promise`<`any`>
+▸ **init**(e: *`EventType`*, ...args: *`any`[]*): `Promise`<`any`>
 
-*Defined in component.ts:77*
+*Defined in component.ts:86*
 
 Asynchronous initializer function.
 
@@ -72,15 +72,16 @@ Asynchronous initializer function.
 | Name | Type |
 | ------ | ------ |
 | e | `EventType` |
+| `Rest` args | `any`[] |
 
 **Returns:** `Promise`<`any`>
 
 ___
-<a id="listen"></a>
+<a id="listener"></a>
 
-###  listen
+###  listener
 
-▸ **listen**(e: *`EventType`*): `Promise`<`Element`>
+▸ **listener**(e: *`EventType`*, ...args: *`any`[]*): `Promise`<`Element`>
 
 *Defined in component.ts:37*
 
@@ -93,6 +94,7 @@ ___
 | Name | Type | Description |
 | ------ | ------ | ------ |
 | e | `EventType` |  Event information |
+| `Rest` args | `any`[] |
 
 **Returns:** `Promise`<`Element`>
 Dom element
@@ -102,9 +104,9 @@ ___
 
 ### `<Protected>` render
 
-▸ **render**(e: *`EventType`*): `Promise`<`Element`>
+▸ **render**(e: *`EventType`*, ...args: *`any`[]*): `Promise`<`Element`>
 
-*Defined in component.ts:60*
+*Defined in component.ts:62*
 
 Render a dom element.
 
@@ -115,6 +117,7 @@ Render a dom element.
 | Name | Type |
 | ------ | ------ |
 | e | `EventType` |
+| `Rest` args | `any`[] |
 
 **Returns:** `Promise`<`Element`>
 
@@ -123,9 +126,9 @@ ___
 
 ### `<Protected>` rerender
 
-▸ **rerender**(e: *`EventType`*): `Promise`<`Element`>
+▸ **rerender**(e: *`EventType`*, ...args: *`any`[]*): `Promise`<`Element`>
 
-*Defined in component.ts:67*
+*Defined in component.ts:74*
 
 Rerender and replace dom element.
 
@@ -134,6 +137,7 @@ Rerender and replace dom element.
 | Name | Type |
 | ------ | ------ |
 | e | `EventType` |
+| `Rest` args | `any`[] |
 
 **Returns:** `Promise`<`Element`>
 
@@ -144,7 +148,7 @@ ___
 
 ▸ **collectElements**(el: *`Element`*, ids: *`string`[][]*): `Element`[]
 
-*Defined in component.ts:224*
+*Defined in component.ts:238*
 
 Gather child elements that have an id match.
 
@@ -164,7 +168,7 @@ ___
 
 ▸ **el**(tagName: *`any`*): `Element`
 
-*Defined in component.ts:82*
+*Defined in component.ts:96*
 
 Substitute function for `React.createElement` in JSX.
 
@@ -183,7 +187,7 @@ ___
 
 ▸ **elFind**(id: *`string`[]*): `Element`
 
-*Defined in component.ts:160*
+*Defined in component.ts:174*
 
 Find an element based on an id array.
 
@@ -202,7 +206,7 @@ ___
 
 ▸ **elList**(emit: *`Emit`*, eventName: *`string`*, id: *`string`[]*): `string`[][]
 
-*Defined in component.ts:167*
+*Defined in component.ts:181*
 
 Reconcile the dom with an array of object.
 

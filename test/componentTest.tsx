@@ -8,15 +8,21 @@ let component: Test, emit: Emit
 
 declare module "@emit-js/emit" {
   interface Emit {
-    testComponent(id?: EventIdType): Promise<Element>
+    testComponent(
+      id: EventIdType,
+      str?: string
+    ): Promise<Element>
   }
 }
 
 class Test extends Component {
-  protected async init(e: EventType): Promise<void> {
+  protected async init(
+    e: EventType,
+    str: string
+  ): Promise<void> {
     const { emit, id } = e
     emit.on([id, "rerender"], this.rerender.bind(this))
-    await emit.set("test", "hi")
+    await emit.set("test", str || "hi")
   }
   protected async render(e: EventType): Promise<Element> {
     const { emit, id } = e
@@ -31,19 +37,19 @@ beforeEach((): void => {
   log(emit)
   store(emit)
 
-  emit.any("testComponent", component.listen.bind(component))
+  emit.any("testComponent", component.listener.bind(component))
 })
 
 test("component render", async (): Promise<void> => {
-  const el = await emit.testComponent()
+  const el = await emit.testComponent(null)
   expect(el).toEqual(expect.any(HTMLDivElement))
   expect(el.tagName).toBe("DIV")
   expect(el.textContent).toBe("hi")
 })
 
 test("component render twice", async (): Promise<void> => {
-  const el = await emit.testComponent()
-  const el2 = await emit.testComponent()
+  const el = await emit.testComponent(null)
+  const el2 = await emit.testComponent(null)
   expect(el).toBe(el2)
 })
 
@@ -63,3 +69,10 @@ test(
     expect(el).toBe(el2)
   }
 )
+
+test("component render with variable", async (): Promise<void> => {
+  const el = await emit.testComponent(null, "hello")
+  expect(el).toEqual(expect.any(HTMLDivElement))
+  expect(el.tagName).toBe("DIV")
+  expect(el.textContent).toBe("hello")
+})
