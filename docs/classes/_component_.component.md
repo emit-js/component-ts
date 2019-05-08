@@ -38,7 +38,7 @@
 
 **● element**: *`Element`*
 
-*Defined in component.ts:7*
+*Defined in component.ts:16*
 
 Rendered dom element.
 
@@ -49,7 +49,7 @@ ___
 
 **● events**: *`Record`<`string`, `boolean`>*
 
-*Defined in component.ts:12*
+*Defined in component.ts:21*
 
 Synthetic event flag.
 
@@ -63,7 +63,7 @@ ___
 
 ▸ **init**(e: *`EventType`*, ...args: *`any`[]*): `Promise`<`any`>
 
-*Defined in component.ts:86*
+*Defined in component.ts:95*
 
 Asynchronous initializer function.
 
@@ -83,7 +83,7 @@ ___
 
 ▸ **listener**(e: *`EventType`*, ...args: *`any`[]*): `Promise`<`Element`>
 
-*Defined in component.ts:37*
+*Defined in component.ts:46*
 
 [Emit-js](https://github.com/emit-js/emit) listener function.
 
@@ -106,7 +106,7 @@ ___
 
 ▸ **render**(e: *`EventType`*, ...args: *`any`[]*): `Promise`<`Element`>
 
-*Defined in component.ts:62*
+*Defined in component.ts:71*
 
 Render a dom element.
 
@@ -128,7 +128,7 @@ ___
 
 ▸ **rerender**(e: *`EventType`*, ...args: *`any`[]*): `Promise`<`Element`>
 
-*Defined in component.ts:74*
+*Defined in component.ts:83*
 
 Rerender and replace dom element.
 
@@ -148,7 +148,7 @@ ___
 
 ▸ **collectElements**(el: *`Element`*, ids: *`string`[][]*): `Element`[]
 
-*Defined in component.ts:238*
+*Defined in component.ts:247*
 
 Gather child elements that have an id match.
 
@@ -168,7 +168,7 @@ ___
 
 ▸ **el**(tagName: *`any`*): `Element`
 
-*Defined in component.ts:96*
+*Defined in component.ts:105*
 
 Substitute function for `React.createElement` in JSX.
 
@@ -187,7 +187,7 @@ ___
 
 ▸ **elFind**(id: *`string`[]*): `Element`
 
-*Defined in component.ts:174*
+*Defined in component.ts:183*
 
 Find an element based on an id array.
 
@@ -206,7 +206,7 @@ ___
 
 ▸ **elList**(emit: *`Emit`*, eventName: *`string`*, id: *`string`[]*): `string`[][]
 
-*Defined in component.ts:181*
+*Defined in component.ts:190*
 
 Reconcile the dom with an array of object.
 
@@ -230,7 +230,7 @@ ___
 
 **htmlProps**: *`object`*
 
-*Defined in component.ts:17*
+*Defined in component.ts:26*
 
 Dom element props.
 
@@ -240,7 +240,7 @@ Dom element props.
 
 **● className**: *`boolean`* = true
 
-*Defined in component.ts:18*
+*Defined in component.ts:27*
 
 ___
 <a id="htmlprops.id"></a>
@@ -249,7 +249,7 @@ ___
 
 **● id**: *`boolean`* = true
 
-*Defined in component.ts:19*
+*Defined in component.ts:28*
 
 ___
 <a id="htmlprops.innerhtml"></a>
@@ -258,7 +258,7 @@ ___
 
 **● innerHTML**: *`boolean`* = true
 
-*Defined in component.ts:20*
+*Defined in component.ts:29*
 
 ___
 <a id="htmlprops.nodevalue"></a>
@@ -267,7 +267,7 @@ ___
 
 **● nodeValue**: *`boolean`* = true
 
-*Defined in component.ts:21*
+*Defined in component.ts:30*
 
 ___
 <a id="htmlprops.tabindex"></a>
@@ -276,7 +276,7 @@ ___
 
 **● tabIndex**: *`boolean`* = true
 
-*Defined in component.ts:22*
+*Defined in component.ts:31*
 
 ___
 <a id="htmlprops.textcontent"></a>
@@ -285,7 +285,7 @@ ___
 
 **● textContent**: *`boolean`* = true
 
-*Defined in component.ts:23*
+*Defined in component.ts:32*
 
 ___
 <a id="htmlprops.value"></a>
@@ -294,7 +294,7 @@ ___
 
 **● value**: *`boolean`* = true
 
-*Defined in component.ts:24*
+*Defined in component.ts:33*
 
 ___
 

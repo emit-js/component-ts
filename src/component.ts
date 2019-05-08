@@ -1,5 +1,14 @@
 import { EventType, Emit } from "@emit-js/emit"
 
+declare global {
+  // eslint-disable-next-line
+  namespace JSX {
+    interface IntrinsicElements {
+      [prop: string]: any
+    }
+  }
+}
+
 export abstract class Component {
   /**
    * Rendered dom element.
