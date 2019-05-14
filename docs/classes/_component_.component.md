@@ -63,7 +63,7 @@ ___
 
 ▸ **init**(e: *`EventType`*, ...args: *`any`[]*): `Promise`<`any`>
 
-*Defined in component.ts:95*
+*Defined in component.ts:97*
 
 Asynchronous initializer function.
 
@@ -148,7 +148,7 @@ ___
 
 ▸ **collectElements**(el: *`Element`*, ids: *`string`[][]*): `Element`[]
 
-*Defined in component.ts:247*
+*Defined in component.ts:249*
 
 Gather child elements that have an id match.
 
@@ -168,7 +168,7 @@ ___
 
 ▸ **el**(tagName: *`any`*): `Element`
 
-*Defined in component.ts:105*
+*Defined in component.ts:107*
 
 Substitute function for `React.createElement` in JSX.
 
@@ -187,7 +187,7 @@ ___
 
 ▸ **elFind**(id: *`string`[]*): `Element`
 
-*Defined in component.ts:183*
+*Defined in component.ts:185*
 
 Find an element based on an id array.
 
@@ -206,7 +206,7 @@ ___
 
 ▸ **elList**(emit: *`Emit`*, eventName: *`string`*, id: *`string`[]*): `string`[][]
 
-*Defined in component.ts:190*
+*Defined in component.ts:192*
 
 Reconcile the dom with an array of object.
 

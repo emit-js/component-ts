@@ -85,7 +85,9 @@ export abstract class Component {
     ...args: any[]
   ): Promise<Element> {
     const el = await this.render(e, ...args)
-    this.element.replaceWith(el)
+    if (this.element) {
+      this.element.replaceWith(el)
+    }
     return this.element = el
   }
 
