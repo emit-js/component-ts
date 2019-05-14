@@ -33,6 +33,20 @@ export abstract class Component {
     value: true,
   }
 
+  protected async afterRender(
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    e: EventType,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    ...args: any[]
+  ): Promise<any> { }
+
+  protected async beforeRender(
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    e: EventType,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    ...args: any[]
+  ): Promise<any> { }
+
   /**
    * [Emit-js](https://github.com/emit-js/emit) listener
    * function.
@@ -56,7 +70,9 @@ export abstract class Component {
     await this.init(e, ...args)
 
     if (!this.element) {
+      await this.beforeRender(e, ...args)
       this.element = await this.render(e, ...args)
+      await this.afterRender(e, ...args)
     }
 
     return this.element

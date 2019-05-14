@@ -15,6 +15,8 @@
 
 ### Methods
 
+* [afterRender](_component_.component.md#afterrender)
+* [beforeRender](_component_.component.md#beforerender)
 * [init](_component_.component.md#init)
 * [listener](_component_.component.md#listener)
 * [render](_component_.component.md#render)
@@ -57,13 +59,49 @@ ___
 
 ## Methods
 
+<a id="afterrender"></a>
+
+### `<Protected>` afterRender
+
+▸ **afterRender**(e: *`EventType`*, ...args: *`any`[]*): `Promise`<`any`>
+
+*Defined in component.ts:36*
+
+**Parameters:**
+
+| Name | Type |
+| ------ | ------ |
+| e | `EventType` |
+| `Rest` args | `any`[] |
+
+**Returns:** `Promise`<`any`>
+
+___
+<a id="beforerender"></a>
+
+### `<Protected>` beforeRender
+
+▸ **beforeRender**(e: *`EventType`*, ...args: *`any`[]*): `Promise`<`any`>
+
+*Defined in component.ts:43*
+
+**Parameters:**
+
+| Name | Type |
+| ------ | ------ |
+| e | `EventType` |
+| `Rest` args | `any`[] |
+
+**Returns:** `Promise`<`any`>
+
+___
 <a id="init"></a>
 
 ### `<Protected>` init
 
 ▸ **init**(e: *`EventType`*, ...args: *`any`[]*): `Promise`<`any`>
 
-*Defined in component.ts:97*
+*Defined in component.ts:113*
 
 Asynchronous initializer function.
 
@@ -83,7 +121,7 @@ ___
 
 ▸ **listener**(e: *`EventType`*, ...args: *`any`[]*): `Promise`<`Element`>
 
-*Defined in component.ts:46*
+*Defined in component.ts:60*
 
 [Emit-js](https://github.com/emit-js/emit) listener function.
 
@@ -106,7 +144,7 @@ ___
 
 ▸ **render**(e: *`EventType`*, ...args: *`any`[]*): `Promise`<`Element`>
 
-*Defined in component.ts:71*
+*Defined in component.ts:87*
 
 Render a dom element.
 
@@ -128,7 +166,7 @@ ___
 
 ▸ **rerender**(e: *`EventType`*, ...args: *`any`[]*): `Promise`<`Element`>
 
-*Defined in component.ts:83*
+*Defined in component.ts:99*
 
 Rerender and replace dom element.
 
@@ -148,7 +186,7 @@ ___
 
 ▸ **collectElements**(el: *`Element`*, ids: *`string`[][]*): `Element`[]
 
-*Defined in component.ts:249*
+*Defined in component.ts:265*
 
 Gather child elements that have an id match.
 
@@ -168,7 +206,7 @@ ___
 
 ▸ **el**(tagName: *`any`*): `Element`
 
-*Defined in component.ts:107*
+*Defined in component.ts:123*
 
 Substitute function for `React.createElement` in JSX.
 
@@ -187,7 +225,7 @@ ___
 
 ▸ **elFind**(id: *`string`[]*): `Element`
 
-*Defined in component.ts:185*
+*Defined in component.ts:201*
 
 Find an element based on an id array.
 
@@ -206,7 +244,7 @@ ___
 
 ▸ **elList**(emit: *`Emit`*, eventName: *`string`*, id: *`string`[]*): `string`[][]
 
-*Defined in component.ts:192*
+*Defined in component.ts:208*
 
 Reconcile the dom with an array of object.
 
