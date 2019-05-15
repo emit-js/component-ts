@@ -9,7 +9,7 @@ declare global {
   }
 }
 
-export abstract class Component {
+export class Component {
   /**
    * Rendered dom element.
    */
@@ -46,6 +46,30 @@ export abstract class Component {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     ...args: any[]
   ): Promise<any> { }
+
+  protected static components:
+    Record<string, Component> = {}
+
+  /**
+   * [Emit-js](https://github.com/emit-js/emit) static
+   * listener function.
+   * 
+   * * @remarks
+   * Use the static listener when you want to create a 
+   * new component instance on each unique id emit.
+   *
+   * @param e - Event information
+   * @returns Dom element
+   */
+  public static listener(
+    e: EventType,
+    ...args: any[]
+  ): Promise<Element> {
+    const id = e.id.join(".")
+    const component = this.components[id] || new this()
+    this.components[id] = component
+    return component.listener(e, ...args)
+  }
 
   /**
    * [Emit-js](https://github.com/emit-js/emit) listener

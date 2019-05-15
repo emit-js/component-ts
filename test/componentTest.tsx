@@ -38,6 +38,7 @@ beforeEach((): void => {
   store(emit)
 
   emit.any("testComponent", component.listener.bind(component))
+  emit.any("cachedTestComponent", Test.listener.bind(Test))
 })
 
 test("component render", async (): Promise<void> => {
@@ -45,6 +46,16 @@ test("component render", async (): Promise<void> => {
   expect(el).toEqual(expect.any(HTMLDivElement))
   expect(el.tagName).toBe("DIV")
   expect(el.textContent).toBe("hi")
+})
+
+test("cached component render", async (): Promise<void> => {
+  const el = await emit.cachedTestComponent(null)
+  const el2 = await emit.cachedTestComponent(null)
+  const el3 = await emit.cachedTestComponent("test")
+  const el4 = await emit.cachedTestComponent("test")
+  expect(el).toBe(el2)
+  expect(el).not.toBe(el3)
+  expect(el3).toBe(el4)
 })
 
 test("component render twice", async (): Promise<void> => {

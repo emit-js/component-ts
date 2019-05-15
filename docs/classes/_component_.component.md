@@ -11,6 +11,7 @@
 ### Properties
 
 * [element](_component_.component.md#element)
+* [components](_component_.component.md#components)
 * [events](_component_.component.md#events)
 
 ### Methods
@@ -25,6 +26,7 @@
 * [el](_component_.component.md#el)
 * [elFind](_component_.component.md#elfind)
 * [elList](_component_.component.md#ellist)
+* [listener](_component_.component.md#listener-1)
 
 ### Object literals
 
@@ -43,6 +45,15 @@
 *Defined in component.ts:16*
 
 Rendered dom element.
+
+___
+<a id="components"></a>
+
+### `<Static>``<Protected>` components
+
+**● components**: *`Record`<`string`, [Component](_component_.component.md)>*
+
+*Defined in component.ts:50*
 
 ___
 <a id="events"></a>
@@ -101,7 +112,7 @@ ___
 
 ▸ **init**(e: *`EventType`*, ...args: *`any`[]*): `Promise`<`any`>
 
-*Defined in component.ts:113*
+*Defined in component.ts:137*
 
 Asynchronous initializer function.
 
@@ -121,7 +132,7 @@ ___
 
 ▸ **listener**(e: *`EventType`*, ...args: *`any`[]*): `Promise`<`Element`>
 
-*Defined in component.ts:60*
+*Defined in component.ts:84*
 
 [Emit-js](https://github.com/emit-js/emit) listener function.
 
@@ -144,7 +155,7 @@ ___
 
 ▸ **render**(e: *`EventType`*, ...args: *`any`[]*): `Promise`<`Element`>
 
-*Defined in component.ts:87*
+*Defined in component.ts:111*
 
 Render a dom element.
 
@@ -166,7 +177,7 @@ ___
 
 ▸ **rerender**(e: *`EventType`*, ...args: *`any`[]*): `Promise`<`Element`>
 
-*Defined in component.ts:99*
+*Defined in component.ts:123*
 
 Rerender and replace dom element.
 
@@ -186,7 +197,7 @@ ___
 
 ▸ **collectElements**(el: *`Element`*, ids: *`string`[][]*): `Element`[]
 
-*Defined in component.ts:267*
+*Defined in component.ts:291*
 
 Gather child elements that have an id match.
 
@@ -206,7 +217,7 @@ ___
 
 ▸ **el**(tagName: *`any`*): `Element`
 
-*Defined in component.ts:123*
+*Defined in component.ts:147*
 
 Substitute function for `React.createElement` in JSX.
 
@@ -225,7 +236,7 @@ ___
 
 ▸ **elFind**(id: *`EventIdType`*): `Element`
 
-*Defined in component.ts:201*
+*Defined in component.ts:225*
 
 Find an element based on an id array.
 
@@ -244,7 +255,7 @@ ___
 
 ▸ **elList**(emit: *`Emit`*, eventName: *`string`*, id: *`string`[]*): `string`[][]
 
-*Defined in component.ts:210*
+*Defined in component.ts:234*
 
 Reconcile the dom with an array of object.
 
@@ -257,6 +268,29 @@ Reconcile the dom with an array of object.
 | id | `string`[] |
 
 **Returns:** `string`[][]
+
+___
+<a id="listener-1"></a>
+
+### `<Static>` listener
+
+▸ **listener**(e: *`EventType`*, ...args: *`any`[]*): `Promise`<`Element`>
+
+*Defined in component.ts:64*
+
+[Emit-js](https://github.com/emit-js/emit) static listener function.
+
+*   @remarks Use the static listener when you want to create a new component instance on each unique id emit.
+
+**Parameters:**
+
+| Name | Type | Description |
+| ------ | ------ | ------ |
+| e | `EventType` |  Event information |
+| `Rest` args | `any`[] |
+
+**Returns:** `Promise`<`Element`>
+Dom element
 
 ___
 
