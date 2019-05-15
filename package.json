@@ -24,7 +24,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@emit-js/emit": "4.0.5",
+    "@emit-js/emit": "4.0.9",
     "@emit-js/log": "2.0.1",
     "@emit-js/store": "8.0.1",
     "@types/jest": "24.0.12",

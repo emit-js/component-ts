@@ -1,4 +1,4 @@
-import { EventType, Emit } from "@emit-js/emit"
+import { EventType, Emit, EventIdType } from "@emit-js/emit"
 
 declare global {
   // eslint-disable-next-line
@@ -147,7 +147,7 @@ export abstract class Component {
           ) {
             node[key] = val
             if (key === "id" && Array.isArray(val)) {
-              node[key] = val.join(".")
+              node[key] = Emit.flattenEventIds(val).join(".")
             }
             //set synthetic events for onUpperCaseName
             if (
@@ -198,8 +198,10 @@ export abstract class Component {
   /**
    * Find an element based on an id array.
    */
-  public static elFind(id: string[]): Element {
-    return document.getElementById(id.join("."))
+  public static elFind(id: EventIdType): Element {
+    return document.getElementById(
+      Emit.flattenEventIds(id).join(".")
+    )
   }
 
   /**

@@ -186,7 +186,7 @@ ___
 
 ▸ **collectElements**(el: *`Element`*, ids: *`string`[][]*): `Element`[]
 
-*Defined in component.ts:265*
+*Defined in component.ts:267*
 
 Gather child elements that have an id match.
 
@@ -223,7 +223,7 @@ ___
 
 ### `<Static>` elFind
 
-▸ **elFind**(id: *`string`[]*): `Element`
+▸ **elFind**(id: *`EventIdType`*): `Element`
 
 *Defined in component.ts:201*
 
@@ -233,7 +233,7 @@ Find an element based on an id array.
 
 | Name | Type |
 | ------ | ------ |
-| id | `string`[] |
+| id | `EventIdType` |
 
 **Returns:** `Element`
 
@@ -244,7 +244,7 @@ ___
 
 ▸ **elList**(emit: *`Emit`*, eventName: *`string`*, id: *`string`[]*): `string`[][]
 
-*Defined in component.ts:208*
+*Defined in component.ts:210*
 
 Reconcile the dom with an array of object.
 
