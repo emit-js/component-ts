@@ -65,7 +65,7 @@ export class Component {
     e: EventType,
     ...args: any[]
   ): Promise<Element> {
-    const id = e.id.join(".")
+    const id = e.name + "." + e.id.join(".")
     const component = this.components[id] || new this()
     this.components[id] = component
     return component.listener(e, ...args)
