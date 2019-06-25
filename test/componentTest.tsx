@@ -66,7 +66,7 @@ test("component render twice", async (): Promise<void> => {
 
 test("component rerender", async (): Promise<void> => {
   const el = await emit.testComponent("test")
-  await emit.emit(["test", "rerender"])
+  await emit.emit(["test", "testComponent", "rerender"])
   const el2 = await emit.testComponent("test")
   expect(el).not.toBe(el2)
 })
@@ -74,7 +74,7 @@ test("component rerender", async (): Promise<void> => {
 test(
   "component render with existing element",
   async(): Promise<void> => {
-    const el = <div id="test" />
+    const el = <div id="test.testComponent" />
     document.body.appendChild(el)
     const el2 = await emit.testComponent("test")
     expect(el).toBe(el2)

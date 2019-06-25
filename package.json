@@ -24,9 +24,9 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@emit-js/emit": "4.0.9",
-    "@emit-js/log": "2.0.1",
-    "@emit-js/store": "8.0.1",
+    "@emit-js/emit": "4.1.0",
+    "@emit-js/log": "2.1.0",
+    "@emit-js/store": "8.1.0",
     "@types/jest": "24.0.12",
     "@types/node": "11.13.8",
     "@typescript-eslint/eslint-plugin": "1.7.0",
